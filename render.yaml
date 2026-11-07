@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: insta-ai-autoposter
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: PORT
+        value: 8000

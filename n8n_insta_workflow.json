@@ -1,0 +1,61 @@
+{
+  "name": "Instagram Multi-Page Autonomous AI Poster",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 12
+            }
+          ]
+        }
+      },
+      "id": "e0e8e97a-9f5b-4357-8e6d-2f954930268a",
+      "name": "Schedule Every 12 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/n8n-trigger",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"topic\": \"Top 3 AI Automation Hacks for Business Growth\",\n  \"media_url\": \"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1080\",\n  \"niche\": \"ai business automation\",\n  \"media_type\": \"IMAGE\"\n}",
+        "options": {}
+      },
+      "id": "89b7b99c-12b2-4d82-8929-e889417cb992",
+      "name": "Hermes AI Multi-Page Publisher",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        300
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Every 12 Hours": {
+      "main": [
+        [
+          {
+            "node": "Hermes AI Multi-Page Publisher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
