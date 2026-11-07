@@ -1,0 +1,225 @@
+Here's a microscopic breakdown of the dashboard mockup, aiming for pixel-perfect recreation:
+
+---
+
+### 1. OVERALL THEME & COLORS:
+
+*   **Sidebar background:** `#311B92` (Deep Royal Indigo)
+*   **Header background:** `#FFFFFF` (White)
+*   **Main content background:** `#F0F2F9` (Very light lavender-grey)
+*   **Metric cards:**
+    *   Background color: `#FFFFFF` (White)
+    *   Text colors: Main value (`#1E293B`), Title/Subtitle (`#475569`, `#64748B`), Green percentage (`#22C55E`), Red (`#EF4444`).
+    *   Icon colors: Specific to each card (e.g., `#8E24AA` for Total Brands, `#5A2DD8` for Connected Accounts).
+    *   Border radius: `12px` (consistent for all cards and panels)
+*   **Primary buttons:**
+    *   `Start Automation`: `#22C55E` (Green)
+    *   `Pause (Global)`: `#EF4444` (Red)
+    *   `Force Post Now`: `#8E24AA` (Deep Purple)
+    *   `Add Schedule`: Background `#F1F5F9`, Text `#64748B` (Light Grey with dark grey text)
+    *   `Manage Plan`: Background `#4338CA`, Text `#FFFFFF` (Dark Blue with white text)
+*   **Active menu item background:** `#5A2DD8` (Medium Purple)
+*   **Pro Plan card background:** `#2C177A` (Darker Indigo)
+
+---
+
+### 2. LEFT SIDEBAR:
+
+*   **Logo / Title at the top:**
+    *   Icon: A stylized "play" triangle pointing right within a larger 'D' shape, in white.
+    *   Text (Line 1): `VisMart` (Purple gradient, bold, larger)
+    *   Text (Line 2): `Publish OS` (White, bold, slightly smaller)
+    *   Subtitle: `Bulk Content Syndication & Publishing OS` (Light grey, smaller)
+*   **Exact list of all menu items:**
+    *   **Dashboard** (Active, purple background `#5A2DD8`, white icon & text): House icon
+    *   Brands & Accounts (Grey background, grey icon & text): Stacks of cards icon
+    *   Content Schedule (Grey background, grey icon & text): Calendar icon
+    *   Media Library (Drive) (Grey background, grey icon & text): Upside-down triangle (Google Drive icon)
+    *   Publishing Queue (Grey background, grey icon & text): List with dots icon
+    *   Live Posts & Logs (Grey background, grey icon & text): Line graph with pulse icon
+    *   Failed / Retry (Grey background, grey icon & text): Clock icon with `3` in a red pill badge (`#EF4444`)
+    *   Reports & Analytics (Grey background, grey icon & text): Bar chart icon
+    *   Automation Settings (Grey background, grey icon & text): Gear/Cog icon
+    *   Team & Roles (Grey background, grey icon & text): Two person outlines icon
+    *   Integrations (Grey background, grey icon & text): Link chain icon
+*   **Bottom section/card (Pro Plan):**
+    *   Background: `#2C177A` (Darker Indigo)
+    *   Icon: Gold crown icon
+    *   Title: `Pro Plan` (White, bold)
+    *   Status: `Active` (Green pill badge `background: #22C55E; color: #FFFFFF; padding: 4px 8px; border-radius: 9999px; font-size: 12px;`)
+    *   Details: `100 Brands • 300 Accounts` (Light grey text)
+    *   Button: `Manage Plan` (Background: `#4338CA`, Text: `#FFFFFF`, Border-radius: `8px`)
+
+---
+
+### 3. TOP HEADER / NAV:
+
+*   **Left side:**
+    *   Main Title: `Autonomous Bulk Content Syndication & Publishing OS` (Dark text `#1E293B`)
+    *   Subtitle (Hindi): `एक डैशबोर्ड से 100+ ब्रॉन्ड्स के Instagram, Facebook और YouTube पर ऑटो-पोस्टिंग` (Grey text `#64748B`)
+    *   Icon: Purple rocket icon to the left of the title.
+*   **Right side:**
+    *   Notification icon (Bell with red dot `background: #EF4444; border-radius: 9999px; width: 8px; height: 8px;`): Black
+    *   Help icon (Question mark): Black
+    *   Profile name, avatar, status pills:
+        *   Avatar: Circular, purple background `MJ` (Mohit Jain) in white text.
+        *   Name: `Mohit Jain` (Black text `#1E293B`)
+        *   Role: `Admin` (Grey text `#64748B`)
+
+---
+
+### 4. TOP METRICS ROW:
+
+(All cards have `background: #FFFFFF`, `border-radius: 12px`)
+
+1.  **Card 1: Total Brands**
+    *   Icon: Purple stacked cards icon (`#8E24AA`)
+    *   Title: `Total Brands`
+    *   Value: `100`
+    *   Subtitle: `↑ +12 इस महीने` (Green text `#22C55E` for the change, `this month` in Hindi)
+2.  **Card 2: Connected Accounts**
+    *   Icon: Purple two-person icon (`#5A2DD8`)
+    *   Title: `Connected Accounts`
+    *   Value: `286`
+    *   Subtitle: `IG: 96 | FB: 95 | YT: 95` (Grey text)
+3.  **Card 3: Today's Posts**
+    *   Icon: Pink play button icon (`#EC4899`)
+    *   Title: `Today's Posts`
+    *   Value: `48`
+    *   Subtitle: `↑ +60% (पिछले दिन से)` (Green text `#22C55E` for the percentage, `from yesterday` in Hindi)
+4.  **Card 4: Scheduled Posts**
+    *   Icon: Light blue calendar icon (`#38BDF8`)
+    *   Title: `Scheduled Posts`
+    *   Value: `320`
+    *   Subtitle: `अगले 7 दिनों में` (`in next 7 days` in Hindi)
+5.  **Card 5: Successful Posts**
+    *   Icon: Green checkmark circle icon (`#22C55E`)
+    *   Title: `Successful Posts`
+    *   Value: `45`
+    *   Subtitle: `93.7% Success Rate` (Green text `#22C55E`)
+6.  **Card 6: Failed Posts**
+    *   Icon: Red warning triangle icon (`#EF4444`)
+    *   Title: `Failed Posts`
+    *   Value: `3`
+    *   Subtitle: `Retry Pending` (Red text `#EF4444`)
+
+---
+
+### 5. MIDDLE SECTION:
+
+#### Left: Publishing Overview Chart
+
+*   **Title:** `Publishing Overview (Last 7 Days)` (Dark text `#1E293B`)
+*   **Type:** Stacked Bar Chart
+*   **Legend:**
+    *   Instagram: `#EC4899` (Pink)
+    *   Facebook: `#3B82F6` (Blue)
+    *   YouTube: `#EF4444` (Red)
+*   **Axes:**
+    *   Y-axis: Numbers from 0 to 100 in increments of 20.
+    *   X-axis: Dates (2 Nov, 3 Nov, 4 Nov, 5 Nov, 6 Nov, 7 Nov, 8 Nov).
+*   **Background:** `#FFFFFF`, `border-radius: 12px`
+
+#### Right: Quick Actions & Integrations Status
+
+*   **Quick Actions Panel:**
+    *   Title: `Quick Actions` (Dark text `#1E293B`)
+    *   Buttons (all `border-radius: 8px`):
+        *   `Start Automation`: Green button (`background: #22C55E; color: #FFFFFF;`), Play icon.
+        *   `Pause (Global)`: Red button (`background: #EF4444; color: #FFFFFF;`), Pause icon (two vertical bars).
+        *   `Force Post Now`: Deep Purple button (`background: #8E24AA; color: #FFFFFF;`), Lightning bolt icon.
+        *   `Add Schedule`: Light Grey button (`background: #F1F5F9; color: #64748B;`), Calendar icon.
+    *   Background: `#FFFFFF`, `border-radius: 12px`
+*   **Integrations Status Panel:**
+    *   Title: `Integrations (Connected)` (Dark text `#1E293B`)
+    *   List Items (each with corresponding logo icon and status):
+        *   Google Drive: Connected (Green checkmark)
+        *   Google Sheets: Connected (Green checkmark)
+        *   Instagram API: 96 Accounts
+        *   Facebook Pages: 95 Pages
+        *   YouTube API: 95 Channels
+    *   Background: `#FFFFFF`, `border-radius: 12px`
+
+---
+
+### 6. LOWER SECTION:
+
+*   **Table Title & Filter Tabs:**
+    *   Main Title: `Publishing Queue` (Dark text `#1E293B`)
+    *   Tabs (rounded corners `border-radius: 9999px`, `padding: 8px 16px`):
+        *   `Publishing Queue (Today)`: Active tab (`background: #5A2DD8; color: #FFFFFF;`)
+        *   `Upcoming (7 Days)`: Inactive tab (`background: #E2E8F0; color: #64748B;`)
+        *   `Published`: Inactive tab (`background: #E2E8F0; color: #64748B;`)
+        *   `Failed / Retry (3)`: Inactive tab (`background: #E2E8F0; color: #64748B;`), Red `3` pill on the tab.
+    *   Filters on the right:
+        *   Dropdown: `All Brands` (Grey text, dropdown arrow icon)
+        *   Date Picker: `08 Nov 2026` (Grey text, calendar icon)
+    *   Background for the entire section: `#FFFFFF`, `border-radius: 12px`
+
+*   **Table Columns:**
+    *   `#`
+    *   `Brand / Niche`
+    *   `Time Slot`
+    *   `Video / Content`
+    *   `Platforms`
+    *   `Status`
+    *   `Actions`
+    (All column headers are grey text `#64748B`)
+
+*   **Each row details (Examples from the image):**
+    *   **Row 1:**
+        *   `#`: `1`
+        *   `Brand / Niche`: House icon, `Indore Properties`, `Real Estate`
+        *   `Time Slot`: Clock icon, `08:30 AM`, Green checkmark
+        *   `Video / Content`: Thumbnail (3:28 duration), `Super Corridor 3BHK Villa`
+        *   `Platforms`: Instagram, Facebook, YouTube icons (colored)
+        *   `Status`: Green badge (`background: #DCFCE7; color: #22C55E; border-radius: 9999px; padding: 4px 10px;`) with `Published` text.
+        *   `Actions`: Eye icon, Share icon, Three vertical dots icon
+    *   **Row 2:**
+        *   `#`: `2`
+        *   `Brand / Niche`: Circuit board icon, `AI Business Hub`, `AI & Automation`
+        *   `Time Slot`: Clock icon, `12:30 PM`
+        *   `Video / Content`: Thumbnail (2:10 duration), `3 AI Tools for 2026`
+        *   `Platforms`: Instagram, YouTube icons (colored)
+        *   `Status`: Yellow badge (`background: #FFFBEB; color: #FBBF24; border-radius: 9999px; padding: 4px 10px;`) with `In Queue` text.
+        *   `Actions`: Eye icon, Share icon, Three vertical dots icon
+    *   **Row 3:**
+        *   `#`: `3`
+        *   `Brand / Niche`: Shopping cart icon, `VisMart Offers`, `Deals & Offers`
+        *   `Time Slot`: Clock icon, `03:00 PM`
+        *   `Video / Content`: Thumbnail (1:15 duration), `Diwali Mega Offer`
+        *   `Platforms`: Instagram, Facebook, YouTube icons (colored)
+        *   `Status`: Yellow badge with `In Queue` text.
+        *   `Actions`: Eye icon, Share icon, Three vertical dots icon
+    *   **Row 4:**
+        *   `#`: `4`
+        *   `Brand / Niche`: Heart icon, `Jain Wellness`, `Health & Ayurveda`
+        *   `Time Slot`: Clock icon, `06:30 PM`
+        *   `Video / Content`: Thumbnail (2:45 duration), `Jain Chyawanprash ke Fayde`
+        *   `Platforms`: Instagram, Facebook icons (colored)
+        *   `Status`: Yellow badge with `In Queue` text.
+        *   `Actions`: Eye icon, Share icon, Three vertical dots icon
+    *   **Row 5:**
+        *   `#`: `5`
+        *   `Brand / Niche`: Briefcase icon, `Startup India`, `Business & Govt Schemes`
+        *   `Time Slot`: Clock icon, `07:30 PM`
+        *   `Video / Content`: Thumbnail (3:05 duration), `Mudra Loan 2027 - Full Guide`
+        *   `Platforms`: Instagram, YouTube icons (colored)
+        *   `Status`: Yellow badge with `In Queue` text.
+        *   `Actions`: Eye icon, Share icon, Three vertical dots icon
+
+---
+
+### 7. RIGHT SIDE (Live Activity Feed):
+
+*   **Title:** `Live Activity` (Dark text `#1E293B`)
+*   **Status Pill:** `Live` (Green pill `background: #DCFCE7; color: #22C55E; border-radius: 9999px; padding: 4px 8px; font-size: 12px;`)
+*   **Background:** `#FFFFFF`, `border-radius: 12px`
+*   **List Items (Timeline format with vertical line):**
+    *   `08:32 AM`: Green checkmark icon, `Posted on YouTube` (`(Indore Properties)`) with a link icon on the right.
+    *   `08:31 AM`: Green checkmark icon, `Posted on Facebook`
+    *   `08:30 AM`: Green checkmark icon, `Posted on Instagram`
+    *   `08:25 AM`: Calendar/Sheet icon, `Picked from Sheet (Row 142)`
+    *   `08:20 AM`: Magnifying glass icon, `Scanning for next schedule...` (Dotted circle on timeline)
+
+---

@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisMart Publish OS - Bulk Content Syndication & Publishing OS</title>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons & Chart.js -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --sidebar-bg: #311B92;
+      --sidebar-active: #5A2DD8;
+      --sidebar-pro: #2C177A;
+      --content-bg: #F0F2F9;
+      --card-bg: #FFFFFF;
+      --text-dark: #1E293B;
+      --text-muted: #64748B;
+      --green: #22C55E;
+      --red: #EF4444;
+      --purple: #8E24AA;
+      --blue: #3B82F6;
+      --pink: #EC4899;
+      --yellow: #F59E0B;
+      --border: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--content-bg);
+      color: var(--text-dark);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ========================================================
+       LEFT SIDEBAR (Deep Royal Indigo #311B92)
+    ======================================================== */
+    aside {
+      width: 260px;
+      background: var(--sidebar-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 16px;
+      flex-shrink: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 50;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+      overflow-y: auto;
+    }
+
+    /* Logo area */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding-left: 6px;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #EC4899, #8E24AA);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(142, 36, 170, 0.4);
+    }
+
+    .brand-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 19px;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .brand-title span {
+      background: linear-gradient(135deg, #F472B6, #C084FC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      color: #A5B4FC;
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* Navigation Links */
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #C7D2FE;
+      text-decoration: none;
+      transition: all 0.15s ease-in-out;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+    }
+
+    .nav-link.active {
+      background: var(--sidebar-active);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(90, 45, 216, 0.45);
+    }
+
+    .nav-link svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.2;
+    }
+
+    .nav-badge-red {
+      margin-left: auto;
+      background: var(--red);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 9999px;
+    }
+
+    /* Pro Plan Card at bottom of sidebar */
+    .pro-card {
+      background: var(--sidebar-pro);
+      border-radius: 12px;
+      padding: 16px;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .pro-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .pro-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .pro-title-wrap svg {
+      color: #FBBF24;
+      width: 18px;
+      height: 18px;
+    }
+
+    .pro-badge {
+      background: var(--green);
+      color: #fff;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+
+    .pro-desc {
+      font-size: 11.5px;
+      color: #CBD5E1;
+      margin-bottom: 12px;
+    }
+
+    .pro-btn {
+      width: 100%;
+      background: #4338CA;
+      color: #fff;
+      border: none;
+      padding: 8px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 12.5px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .pro-btn:hover {
+      background: #4F46E5;
+    }
+
+    /* ========================================================
+       MAIN WRAPPER & HEADER (White #FFFFFF)
+    ======================================================== */
+    .main-wrap {
+      margin-left: 260px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    header {
+      background: #FFFFFF;
+      height: 70px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .rocket-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #F3E8FF;
+      color: #8E24AA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-titles h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: -0.01em;
+    }
+
+    .header-titles p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon-btn {
+      position: relative;
+      background: none;
+      border: none;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .red-dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      border-radius: 9999px;
+      border: 2px solid #fff;
+    }
+
+    .profile-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 12px;
+      border-left: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .profile-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 9999px;
+      background: var(--purple);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .profile-info {
+      line-height: 1.25;
+    }
+
+    .profile-name {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--text-dark);
+    }
+
+    .profile-role {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* ========================================================
+       CONTENT CONTAINER
+    ======================================================== */
+    .content-body {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* ========================================================
+       TOP METRICS ROW (6 White Cards with 12px Radius)
+    ======================================================== */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 18px 16px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+
+    .metric-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .metric-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .metric-icon-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .metric-icon-wrap svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .metric-val {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric-sub {
+      font-size: 11.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .sub-green { color: var(--green); }
+    .sub-red { color: var(--red); }
+    .sub-gray { color: var(--text-muted); }
+
+    /* ========================================================
+       MIDDLE SECTION: CHART + QUICK ACTIONS & INTEGRATIONS
+    ======================================================== */
+    .middle-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    /* Left: Chart Card */
+    .chart-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .chart-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .chart-legends {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+    .dot-pink { background: var(--pink); }
+    .dot-blue { background: var(--blue); }
+    .dot-red { background: var(--red); }
+
+    .chart-container {
+      position: relative;
+      flex: 1;
+      min-height: 200px;
+    }
+
+    /* Right: Actions & Integrations */
+    .side-panels-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Quick Actions */
+    .quick-actions-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .panel-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+    }
+
+    .actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .btn-action:active {
+      transform: scale(0.98);
+    }
+
+    .btn-action svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-start { background: var(--green); color: #fff; }
+    .btn-pause { background: var(--red); color: #fff; }
+    .btn-force { background: var(--purple); color: #fff; }
+    .btn-schedule { background: #F1F5F9; color: var(--text-muted); border: 1px solid var(--border); }
+
+    /* Integrations Panel */
+    .integrations-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .integration-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .integration-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 12.5px;
+    }
+
+    .int-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .int-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .int-status-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .int-count-badge {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* ========================================================
+       LOWER SECTION: PUBLISHING QUEUE TABLE & RIGHT ACTIVITY FEED
+    ======================================================== */
+    .lower-grid {
+      display: grid;
+      grid-template-columns: 2.8fr 1.2fr;
+      gap: 20px;
+    }
+
+    /* Publishing Queue Section */
+    .queue-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .queue-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .queue-tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-pill {
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .tab-active {
+      background: var(--sidebar-active);
+      color: #fff;
+    }
+
+    .tab-inactive {
+      background: #E2E8F0;
+      color: var(--text-muted);
+    }
+
+    .tab-badge-red {
+      background: var(--red);
+      color: #fff;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 9999px;
+    }
+
+    .queue-filters {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-select, .date-filter {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      background: #fff;
+      outline: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Data Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 14px 10px;
+      border-bottom: 1px solid #F1F5F9;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Table elements */
+    .brand-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--purple);
+    }
+
+    .brand-icon svg { width: 18px; height: 18px; }
+
+    .brand-name { font-weight: 700; color: var(--text-dark); }
+    .brand-niche { font-size: 11px; color: var(--text-muted); }
+
+    .slot-cell {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: var(--text-dark);
+      font-size: 12.5px;
+    }
+
+    .slot-cell svg { width: 14px; height: 14px; color: var(--text-muted); }
+
+    .content-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .thumbnail-wrap {
+      position: relative;
+      width: 58px;
+      height: 38px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #CBD5E1;
+      flex-shrink: 0;
+    }
+
+    .thumbnail-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dur-badge {
+      position: absolute;
+      bottom: 2px;
+      right: 3px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 3px;
+      border-radius: 3px;
+    }
+
+    .content-title {
+      font-weight: 600;
+      color: var(--text-dark);
+      max-width: 220px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .platform-chips {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .plat-chip {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .chip-ig { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
+    .chip-fb { background: #1877F2; }
+    .chip-yt { background: #FF0000; }
+    .plat-chip svg { width: 13px; height: 13px; }
+
+    /* Status Badges */
+    .badge-published {
+      background: #DCFCE7;
+      color: var(--green);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      display: inline-block;
+    }
+
+    .badge-queue {
+      background: #FFFBEB;
+      color: var(--yellow);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      display: inline-block;
+    }
+
+    .row-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-act-icon {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    .btn-act-icon:hover {
+      background: #F1F5F9;
+      color: var(--text-dark);
+    }
+
+    .btn-act-icon svg { width: 16px; height: 16px; }
+
+    /* Right: Live Activity Feed */
+    .activity-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .activity-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .live-badge {
+      background: #DCFCE7;
+      color: var(--green);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 9999px;
+      background: var(--green);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    .activity-timeline {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      position: relative;
+      padding-bottom: 22px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    /* Vertical line */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 10px;
+      bottom: 0;
+      width: 2px;
+      background: #E2E8F0;
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    .time-node {
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      background: #DCFCE7;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .time-node.node-scan {
+      background: #F1F5F9;
+      color: var(--text-muted);
+      border: 2px dotted #94A3B8;
+    }
+
+    .time-node svg { width: 13px; height: 13px; }
+
+    .time-details {
+      flex: 1;
+      line-height: 1.35;
+    }
+
+    .time-stamp {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .time-text {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-top: 1px;
+    }
+
+    .time-subtext {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1400px) {
+      .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+      .middle-grid { grid-template-columns: 1fr; }
+      .lower-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       1. LEFT SIDEBAR (Deep Royal Indigo #311B92)
+  ======================================================== -->
+  <aside>
+    <div>
+      <!-- Brand Logo -->
+      <div class="brand-logo">
+        <div class="logo-icon">
+          <i data-lucide="play" style="fill: #fff; width: 18px; height: 18px;"></i>
+        </div>
+        <div>
+          <div class="brand-title"><span>VisMart</span> Publish OS</div>
+          <div class="brand-subtitle">Bulk Syndication & Publishing OS</div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <ul class="nav-list">
+        <li>
+          <a class="nav-link active">
+            <i data-lucide="home"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="layers"></i>
+            <span>Brands & Accounts</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="calendar"></i>
+            <span>Content Schedule</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="hard-drive"></i>
+            <span>Media Library (Drive)</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="list-video"></i>
+            <span>Publishing Queue</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="activity"></i>
+            <span>Live Posts & Logs</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="clock"></i>
+            <span>Failed / Retry</span>
+            <span class="nav-badge-red">3</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="bar-chart-2"></i>
+            <span>Reports & Analytics</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="settings"></i>
+            <span>Automation Settings</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="users"></i>
+            <span>Team & Roles</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link">
+            <i data-lucide="link-2"></i>
+            <span>Integrations</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Pro Plan Card -->
+    <div class="pro-card">
+      <div class="pro-header">
+        <div class="pro-title-wrap">
+          <i data-lucide="crown"></i>
+          <span>Pro Plan</span>
+        </div>
+        <span class="pro-badge">Active</span>
+      </div>
+      <div class="pro-desc">100 Brands • 300 Accounts</div>
+      <button class="pro-btn">Manage Plan</button>
+    </div>
+  </aside>
+
+  <!-- ========================================================
+       2. MAIN APPLICATION WRAPPER
+  ======================================================== -->
+  <div class="main-wrap">
+
+    <!-- Top Header -->
+    <header>
+      <div class="header-left">
+        <div class="rocket-icon">
+          <i data-lucide="rocket"></i>
+        </div>
+        <div class="header-titles">
+          <h1>Autonomous Bulk Content Syndication & Publishing OS</h1>
+          <p>एक डैशबोर्ड से 100+ ब्रॉन्ड्स के Instagram, Facebook और YouTube पर ऑटो-पोस्टिंग</p>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button class="icon-btn" title="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="red-dot"></span>
+        </button>
+        <button class="icon-btn" title="Help">
+          <i data-lucide="help-circle"></i>
+        </button>
+        <div class="profile-pill">
+          <div class="profile-avatar">MJ</div>
+          <div class="profile-info">
+            <div class="profile-name">Mohit Jain</div>
+            <div class="profile-role">Admin</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <div class="content-body">
+
+      <!-- ========================================================
+           3. TOP METRICS ROW (6 Cards)
+      ======================================================== -->
+      <section class="metrics-grid">
+        <!-- 1. Total Brands -->
+        <div class="metric-card">
+          <div class="metric-top">
+            <span class="metric-title">Total Brands</span>
+            <div class="metric-icon-wrap" style="background: #F3E8FF; color: #8E24AA;">
+              <i data-lucide="layers"></i>
+            </div>
+          </div>
+          <div class="metric-val">100</div>
+          <div class="metric-sub sub-green">
+            <i data-lucide="arrow-up" style="width: 14px; height: 14px;"></i>
+            <span>+12 इस महीने</span>
+          </div>
+        </div>
+
+        <!-- 2. Connected Accounts -->
+        <div class="metric-card">
+          <div class="metric-top">
+            <span class="metric-title">Connected Accounts</span>
+            <div class="metric-icon-wrap" style="background: #EDE9FE; color: #5A2DD8;">
+              <i data-lucide="users"></i>
+            </div>
+          </div>
+          <div class="metric-val">286</div>
+          <div class="metric-sub sub-gray">IG: 96 | FB: 95 | YT: 95</div>
+        </div>
+
+        <!-- 3. Today's Posts -->
+        <div class="metric-card">
+          <div class="metric-top">
+            <span class="metric-title">Today's Posts</span>
+            <div class="metric-icon-wrap" style="background: #FCE7F3; color: #EC4899;">
+              <i data-lucide="play-circle"></i>
+            </div>
+          </div>
+          <div class="metric-val">48</div>
+          <div class="metric-sub sub-green">
+            <i data-lucide="arrow-up" style="width: 14px; height: 14px;"></i>
+            <span>+60% (पिछले दिन से)</span>
+          </div>
+        </div>
+
+        <!-- 4. Scheduled Posts -->
+        <div class="metric-card">
+          <div class="metric-top">
+            <span class="metric-title">Scheduled Posts</span>
+            <div class="metric-icon-wrap" style="background: #E0F2FE; color: #38BDF8;">
+              <i data-lucide="calendar"></i>
+            </div>
+          </div>
+          <div class="metric-val">320</div>
+          <div class="metric-sub sub-gray">अगले 7 दिनों में</div>
+        </div>
+
+        <!-- 5. Successful Posts -->
+        <div class="metric-card">
+          <div class="metric-top">
+            <span class="metric-title">Successful Posts</span>
+            <div class="metric-icon-wrap" style="background: #DCFCE7; color: #22C55E;">
+              <i data-lucide="check-circle"></i>
+            </div>
+          </div>
+          <div class="metric-val">45</div>
+          <div class="metric-sub sub-green">93.7% Success Rate</div>
+        </div>
+
+        <!-- 6. Failed Posts -->
+        <div class="metric-card">
+          <div class="metric-top">
+            <span class="metric-title">Failed Posts</span>
+            <div class="metric-icon-wrap" style="background: #FEE2E2; color: #EF4444;">
+              <i data-lucide="alert-triangle"></i>
+            </div>
+          </div>
+          <div class="metric-val">3</div>
+          <div class="metric-sub sub-red">Retry Pending</div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           4. MIDDLE SECTION: CHART + ACTIONS & INTEGRATIONS
+      ======================================================== -->
+      <section class="middle-grid">
+        <!-- Left: Publishing Overview Chart -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Publishing Overview (Last 7 Days)</div>
+            <div class="chart-legends">
+              <div class="legend-item"><span class="legend-dot dot-pink"></span> Instagram</div>
+              <div class="legend-item"><span class="legend-dot dot-blue"></span> Facebook</div>
+              <div class="legend-item"><span class="legend-dot dot-red"></span> YouTube</div>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="publishChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Right: Actions & Integrations Panels -->
+        <div class="side-panels-wrap">
+          <!-- Quick Actions -->
+          <div class="quick-actions-card">
+            <div class="panel-title">Quick Actions</div>
+            <div class="actions-grid">
+              <button class="btn-action btn-start" onclick="triggerAction('Start Automation')">
+                <i data-lucide="play" style="fill: #fff;"></i>
+                <span>Start Automation</span>
+              </button>
+              <button class="btn-action btn-pause" onclick="triggerAction('Pause Global')">
+                <i data-lucide="pause" style="fill: #fff;"></i>
+                <span>Pause (Global)</span>
+              </button>
+              <button class="btn-action btn-force" onclick="triggerAction('Force Post Now')">
+                <i data-lucide="zap" style="fill: #fff;"></i>
+                <span>Force Post Now</span>
+              </button>
+              <button class="btn-action btn-schedule" onclick="triggerAction('Add Schedule')">
+                <i data-lucide="calendar-plus"></i>
+                <span>Add Schedule</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Integrations Status -->
+          <div class="integrations-card">
+            <div class="panel-title">Integrations (Connected)</div>
+            <div class="integration-list">
+              <div class="integration-row">
+                <div class="int-left">
+                  <div class="int-icon"><i data-lucide="hard-drive" style="color: #4285F4;"></i></div>
+                  <span>Google Drive</span>
+                </div>
+                <span class="int-status-badge"><i data-lucide="check" style="width: 14px; height: 14px;"></i> Connected</span>
+              </div>
+              <div class="integration-row">
+                <div class="int-left">
+                  <div class="int-icon"><i data-lucide="table" style="color: #0F9D58;"></i></div>
+                  <span>Google Sheets</span>
+                </div>
+                <span class="int-status-badge"><i data-lucide="check" style="width: 14px; height: 14px;"></i> Connected</span>
+              </div>
+              <div class="integration-row">
+                <div class="int-left">
+                  <div class="int-icon"><i data-lucide="instagram" style="color: #E1306C;"></i></div>
+                  <span>Instagram API</span>
+                </div>
+                <span class="int-count-badge">96 Accounts</span>
+              </div>
+              <div class="integration-row">
+                <div class="int-left">
+                  <div class="int-icon"><i data-lucide="facebook" style="color: #1877F2;"></i></div>
+                  <span>Facebook Pages</span>
+                </div>
+                <span class="int-count-badge">95 Pages</span>
+              </div>
+              <div class="integration-row">
+                <div class="int-left">
+                  <div class="int-icon"><i data-lucide="youtube" style="color: #FF0000;"></i></div>
+                  <span>YouTube API</span>
+                </div>
+                <span class="int-count-badge">95 Channels</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           5. LOWER SECTION: PUBLISHING QUEUE & LIVE ACTIVITY
+      ======================================================== -->
+      <section class="lower-grid">
+        <!-- Publishing Queue Table -->
+        <div class="queue-card">
+          <div class="queue-header">
+            <div class="queue-tabs">
+              <a class="tab-pill tab-active">Publishing Queue (Today)</a>
+              <a class="tab-pill tab-inactive">Upcoming (7 Days)</a>
+              <a class="tab-pill tab-inactive">Published</a>
+              <a class="tab-pill tab-inactive">Failed / Retry <span class="tab-badge-red">3</span></a>
+            </div>
+            <div class="queue-filters">
+              <select class="filter-select">
+                <option>All Brands (100)</option>
+                <option>Indore Properties</option>
+                <option>AI Business Hub</option>
+                <option>VisMart Offers</option>
+              </select>
+              <input type="text" class="date-filter" value="08 Nov 2026" readonly>
+            </div>
+          </div>
+
+          <!-- Queue Table -->
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 30px;">#</th>
+                <th>Brand / Niche</th>
+                <th>Time Slot</th>
+                <th>Video / Content</th>
+                <th>Platforms</th>
+                <th>Status</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1 -->
+              <tr>
+                <td style="font-weight: 700; color: var(--text-muted);">1</td>
+                <td>
+                  <div class="brand-cell">
+                    <div class="brand-icon"><i data-lucide="home"></i></div>
+                    <div>
+                      <div class="brand-name">Indore Properties</div>
+                      <div class="brand-niche">Real Estate</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="slot-cell">
+                    <i data-lucide="clock"></i>
+                    <span>08:30 AM</span>
+                    <i data-lucide="check-circle" style="color: var(--green); width: 14px; height: 14px; margin-left: 2px;"></i>
+                  </div>
+                </td>
+                <td>
+                  <div class="content-cell">
+                    <div class="thumbnail-wrap">
+                      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=120&auto=format&fit=crop&q=60" alt="Villa">
+                      <span class="dur-badge">3:28</span>
+                    </div>
+                    <div class="content-title">Super Corridor 3BHK Villa</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="platform-chips">
+                    <div class="plat-chip chip-ig"><i data-lucide="instagram"></i></div>
+                    <div class="plat-chip chip-fb"><i data-lucide="facebook"></i></div>
+                    <div class="plat-chip chip-yt"><i data-lucide="youtube"></i></div>
+                  </div>
+                </td>
+                <td><span class="badge-published">Published</span></td>
+                <td style="text-align: right;">
+                  <div class="row-actions" style="justify-content: flex-end;">
+                    <button class="btn-act-icon" title="View"><i data-lucide="eye"></i></button>
+                    <button class="btn-act-icon" title="Share"><i data-lucide="share-2"></i></button>
+                    <button class="btn-act-icon" title="Options"><i data-lucide="more-vertical"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 2 -->
+              <tr>
+                <td style="font-weight: 700; color: var(--text-muted);">2</td>
+                <td>
+                  <div class="brand-cell">
+                    <div class="brand-icon"><i data-lucide="cpu"></i></div>
+                    <div>
+                      <div class="brand-name">AI Business Hub</div>
+                      <div class="brand-niche">AI & Automation</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="slot-cell">
+                    <i data-lucide="clock"></i>
+                    <span>12:30 PM</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="content-cell">
+                    <div class="thumbnail-wrap">
+                      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&auto=format&fit=crop&q=60" alt="AI">
+                      <span class="dur-badge">2:10</span>
+                    </div>
+                    <div class="content-title">3 AI Tools for 2026</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="platform-chips">
+                    <div class="plat-chip chip-ig"><i data-lucide="instagram"></i></div>
+                    <div class="plat-chip chip-yt"><i data-lucide="youtube"></i></div>
+                  </div>
+                </td>
+                <td><span class="badge-queue">In Queue</span></td>
+                <td style="text-align: right;">
+                  <div class="row-actions" style="justify-content: flex-end;">
+                    <button class="btn-act-icon" title="View"><i data-lucide="eye"></i></button>
+                    <button class="btn-act-icon" title="Share"><i data-lucide="share-2"></i></button>
+                    <button class="btn-act-icon" title="Options"><i data-lucide="more-vertical"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 3 -->
+              <tr>
+                <td style="font-weight: 700; color: var(--text-muted);">3</td>
+                <td>
+                  <div class="brand-cell">
+                    <div class="brand-icon"><i data-lucide="shopping-cart"></i></div>
+                    <div>
+                      <div class="brand-name">VisMart Offers</div>
+                      <div class="brand-niche">Deals & Offers</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="slot-cell">
+                    <i data-lucide="clock"></i>
+                    <span>03:00 PM</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="content-cell">
+                    <div class="thumbnail-wrap">
+                      <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=120&auto=format&fit=crop&q=60" alt="Sale">
+                      <span class="dur-badge">1:15</span>
+                    </div>
+                    <div class="content-title">Diwali Mega Offer Promo</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="platform-chips">
+                    <div class="plat-chip chip-ig"><i data-lucide="instagram"></i></div>
+                    <div class="plat-chip chip-fb"><i data-lucide="facebook"></i></div>
+                    <div class="plat-chip chip-yt"><i data-lucide="youtube"></i></div>
+                  </div>
+                </td>
+                <td><span class="badge-queue">In Queue</span></td>
+                <td style="text-align: right;">
+                  <div class="row-actions" style="justify-content: flex-end;">
+                    <button class="btn-act-icon" title="View"><i data-lucide="eye"></i></button>
+                    <button class="btn-act-icon" title="Share"><i data-lucide="share-2"></i></button>
+                    <button class="btn-act-icon" title="Options"><i data-lucide="more-vertical"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 4 -->
+              <tr>
+                <td style="font-weight: 700; color: var(--text-muted);">4</td>
+                <td>
+                  <div class="brand-cell">
+                    <div class="brand-icon"><i data-lucide="heart"></i></div>
+                    <div>
+                      <div class="brand-name">Jain Wellness</div>
+                      <div class="brand-niche">Health & Ayurveda</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="slot-cell">
+                    <i data-lucide="clock"></i>
+                    <span>06:30 PM</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="content-cell">
+                    <div class="thumbnail-wrap">
+                      <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=120&auto=format&fit=crop&q=60" alt="Yoga">
+                      <span class="dur-badge">2:45</span>
+                    </div>
+                    <div class="content-title">Jain Chyawanprash ke Fayde</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="platform-chips">
+                    <div class="plat-chip chip-ig"><i data-lucide="instagram"></i></div>
+                    <div class="plat-chip chip-fb"><i data-lucide="facebook"></i></div>
+                  </div>
+                </td>
+                <td><span class="badge-queue">In Queue</span></td>
+                <td style="text-align: right;">
+                  <div class="row-actions" style="justify-content: flex-end;">
+                    <button class="btn-act-icon" title="View"><i data-lucide="eye"></i></button>
+                    <button class="btn-act-icon" title="Share"><i data-lucide="share-2"></i></button>
+                    <button class="btn-act-icon" title="Options"><i data-lucide="more-vertical"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 5 -->
+              <tr>
+                <td style="font-weight: 700; color: var(--text-muted);">5</td>
+                <td>
+                  <div class="brand-cell">
+                    <div class="brand-icon"><i data-lucide="briefcase"></i></div>
+                    <div>
+                      <div class="brand-name">Startup India</div>
+                      <div class="brand-niche">Business & Govt Schemes</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="slot-cell">
+                    <i data-lucide="clock"></i>
+                    <span>07:30 PM</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="content-cell">
+                    <div class="thumbnail-wrap">
+                      <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=120&auto=format&fit=crop&q=60" alt="Startup">
+                      <span class="dur-badge">3:05</span>
+                    </div>
+                    <div class="content-title">Mudra Loan 2027 - Full Guide</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="platform-chips">
+                    <div class="plat-chip chip-ig"><i data-lucide="instagram"></i></div>
+                    <div class="plat-chip chip-yt"><i data-lucide="youtube"></i></div>
+                  </div>
+                </td>
+                <td><span class="badge-queue">In Queue</span></td>
+                <td style="text-align: right;">
+                  <div class="row-actions" style="justify-content: flex-end;">
+                    <button class="btn-act-icon" title="View"><i data-lucide="eye"></i></button>
+                    <button class="btn-act-icon" title="Share"><i data-lucide="share-2"></i></button>
+                    <button class="btn-act-icon" title="Options"><i data-lucide="more-vertical"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Right: Live Activity Feed -->
+        <div class="activity-card">
+          <div class="activity-header">
+            <div class="panel-title" style="margin-bottom: 0;">Live Activity</div>
+            <span class="live-badge">
+              <span class="live-dot"></span>
+              <span>Live</span>
+            </span>
+          </div>
+
+          <div class="activity-timeline">
+            <!-- Event 1 -->
+            <div class="timeline-item">
+              <div class="time-node"><i data-lucide="check"></i></div>
+              <div class="time-details">
+                <div class="time-stamp">08:32 AM</div>
+                <div class="time-text">Posted on YouTube</div>
+                <div class="time-subtext">(Indore Properties)</div>
+              </div>
+              <button class="btn-act-icon" style="margin-top: 2px;"><i data-lucide="external-link" style="width: 14px; height: 14px;"></i></button>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="timeline-item">
+              <div class="time-node"><i data-lucide="check"></i></div>
+              <div class="time-details">
+                <div class="time-stamp">08:31 AM</div>
+                <div class="time-text">Posted on Facebook</div>
+                <div class="time-subtext">(Indore Properties)</div>
+              </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="timeline-item">
+              <div class="time-node"><i data-lucide="check"></i></div>
+              <div class="time-details">
+                <div class="time-stamp">08:30 AM</div>
+                <div class="time-text">Posted on Instagram</div>
+                <div class="time-subtext">(Indore Properties)</div>
+              </div>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="timeline-item">
+              <div class="time-node" style="background: #E0E7FF; color: #4F46E5;"><i data-lucide="file-spreadsheet"></i></div>
+              <div class="time-details">
+                <div class="time-stamp">08:25 AM</div>
+                <div class="time-text">Picked from Sheet</div>
+                <div class="time-subtext">Row 142 processed</div>
+              </div>
+            </div>
+
+            <!-- Event 5 -->
+            <div class="timeline-item">
+              <div class="time-node node-scan"><i data-lucide="search"></i></div>
+              <div class="time-details">
+                <div class="time-stamp">08:20 AM</div>
+                <div class="time-text">Scanning for next schedule...</div>
+                <div class="time-subtext">Next: 12:30 PM slot</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Chart.js Stacked Bar Chart (Last 7 Days)
+    const ctx = document.getElementById('publishChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['2 Nov', '3 Nov', '4 Nov', '5 Nov', '6 Nov', '7 Nov', '8 Nov'],
+        datasets: [
+          {
+            label: 'Instagram',
+            data: [15, 18, 14, 20, 22, 25, 18],
+            backgroundColor: '#EC4899',
+            borderRadius: 4,
+          },
+          {
+            label: 'Facebook',
+            data: [12, 14, 15, 16, 18, 19, 15],
+            backgroundColor: '#3B82F6',
+            borderRadius: 4,
+          },
+          {
+            label: 'YouTube',
+            data: [11, 10, 15, 12, 14, 14, 15],
+            backgroundColor: '#EF4444',
+            borderRadius: 4,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          x: {
+            stacked: true,
+            grid: { display: false },
+            ticks: { font: { size: 11, family: 'Inter' }, color: '#64748B' }
+          },
+          y: {
+            stacked: true,
+            beginAtZero: true,
+            max: 100,
+            ticks: { stepSize: 20, font: { size: 11, family: 'Inter' }, color: '#64748B' },
+            grid: { color: '#F1F5F9' }
+          }
+        }
+      }
+    });
+
+    function triggerAction(actionName) {
+      alert(actionName + ' triggered successfully! VisMart Publish OS engine updated.');
+    }
+  </script>
+</body>
+</html>
