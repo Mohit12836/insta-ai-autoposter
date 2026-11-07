@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>VisMart Social OS - Native Command Center</title>
+<!-- Google Fonts: Plus Jakarta Sans, Inter, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS Play CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim from System -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#c0c1ff",
+            "on-tertiary-container": "#5b0017",
+            "on-secondary-fixed": "#002113",
+            "on-error": "#690005",
+            "on-secondary": "#003824",
+            "inverse-surface": "#dfe2ef",
+            "inverse-on-surface": "#2c303a",
+            "background": "#0f131c",
+            "tertiary-fixed-dim": "#ffb2b7",
+            "tertiary-container": "#ff516a",
+            "primary-fixed": "#e1e0ff",
+            "primary-container": "#8083ff",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "secondary-fixed-dim": "#4edea3",
+            "on-error-container": "#ffdad6",
+            "secondary-container": "#00a572",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#0a0e17",
+            "secondary": "#4edea3",
+            "on-background": "#dfe2ef",
+            "on-tertiary-fixed-variant": "#92002a",
+            "on-primary-fixed": "#07006c",
+            "error-container": "#93000a",
+            "secondary-fixed": "#6ffbbe",
+            "on-primary": "#1000a9",
+            "surface-container-highest": "#31353f",
+            "on-surface-variant": "#c7c4d7",
+            "on-secondary-fixed-variant": "#005236",
+            "on-tertiary": "#67001b",
+            "on-primary-container": "#0d0096",
+            "on-tertiary-fixed": "#40000d",
+            "primary-fixed-dim": "#c0c1ff",
+            "surface-container-low": "#181b25",
+            "surface-container": "#1c1f29",
+            "tertiary-fixed": "#ffdadb",
+            "on-secondary-container": "#00311f",
+            "surface-container-high": "#262a34",
+            "tertiary": "#ffb2b7",
+            "on-surface": "#dfe2ef",
+            "surface-dim": "#0f131c",
+            "primary": "#c0c1ff",
+            "surface-bright": "#353943",
+            "outline": "#908fa0",
+            "surface": "#0f131c",
+            "outline-variant": "#464554",
+            "surface-variant": "#31353f",
+            "inverse-primary": "#494bd6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "margin-md": "1.5rem",
+            "margin-lg": "2rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-2xs": "0.125rem",
+            "gutter": "1rem",
+            "space-2xl": "2rem",
+            "margin": "1rem",
+            "space-md": "0.75rem",
+            "gutter-lg": "1.5rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "label-md": [
+              "Inter"
+            ],
+            "body-lg": [
+              "Inter"
+            ],
+            "headline-lg": [
+              "Plus Jakarta Sans"
+            ],
+            "display-xl-mobile": [
+              "Plus Jakarta Sans"
+            ],
+            "label-sm": [
+              "Inter"
+            ],
+            "headline-md": [
+              "Plus Jakarta Sans"
+            ],
+            "code-sm": [
+              "JetBrains Mono"
+            ],
+            "body-sm": [
+              "Inter"
+            ],
+            "body-md": [
+              "Inter"
+            ],
+            "display-xl": [
+              "Plus Jakarta Sans"
+            ],
+            "headline-sm": [
+              "Plus Jakarta Sans"
+            ],
+            "headline-lg-mobile": [
+              "Plus Jakarta Sans"
+            ],
+            "title-md": [
+              "Inter"
+            ]
+          },
+          "fontSize": {
+            "label-md": [
+              "12px",
+              {
+                "lineHeight": "16px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "500"
+              }
+            ],
+            "body-lg": [
+              "15px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-lg": [
+              "30px",
+              {
+                "lineHeight": "38px",
+                "letterSpacing": "-0.025em",
+                "fontWeight": "600"
+              }
+            ],
+            "display-xl-mobile": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "label-sm": [
+              "11px",
+              {
+                "lineHeight": "14px",
+                "letterSpacing": "0.04em",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-md": [
+              "22px",
+              {
+                "lineHeight": "30px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "code-sm": [
+              "11px",
+              {
+                "lineHeight": "16px",
+                "fontWeight": "500"
+              }
+            ],
+            "body-sm": [
+              "12px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "400"
+              }
+            ],
+            "body-md": [
+              "13px",
+              {
+                "lineHeight": "20px",
+                "fontWeight": "400"
+              }
+            ],
+            "display-xl": [
+              "44px",
+              {
+                "lineHeight": "52px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-sm": [
+              "18px",
+              {
+                "lineHeight": "26px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-lg-mobile": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "title-md": [
+              "15px",
+              {
+                "lineHeight": "22px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Custom radar ping and telemetry styling adhering to obsidian tokens */
+    @keyframes radar-pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.6); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0; }
+    }
+    .radar-beacon {
+      animation: radar-pulse 2s infinite ease-out;
+    }
+    /* Safe area padding fallback for standalone simulation */
+    .safe-area-bottom {
+      padding-bottom: env(safe-area-inset-bottom, 12px);
+    }
+    /* Hide scrollbars for ultra-clean command canvas */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    * {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex justify-center items-start">
+<!-- Mobile Viewport Shell (iPhone 14/15 Pro Form Factor: 390px x 844px context) -->
+<div class="w-full max-w-[420px] min-h-screen bg-surface-container-lowest relative flex flex-col shadow-2xl">
+<!-- 0. iOS System Status Bar Indicator -->
+<aside aria-label="Status Bar" class="sticky top-0 z-50 w-full bg-surface-container-lowest/80 backdrop-blur-md px-space-lg pt-space-xs pb-1 flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">9:41</span>
+<div class="w-28 h-4 bg-surface-container-low rounded-full mx-auto flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest inline-block mr-1"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-high inline-block"></span>
+</div>
+<div class="flex items-center space-x-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[14px]">wifi</span>
+<span class="material-symbols-outlined text-[16px]">battery_full</span>
+</div>
+</aside>
+<!-- 1. TopAppBar (Shared Component Implementation) -->
+<!-- Blueprint: TopAppBar small, headline 'Vismart Social OS', avatar leading, sensors trailing -->
+<header class="bg-surface-container-lowest/80 backdrop-blur-md docked full-width top-0 sticky z-40 shadow-sm border-b border-outline-variant/30">
+<div class="flex justify-between items-center w-full px-space-md h-12 max-w-md mx-auto">
+<!-- Leading: Brand Switcher Avatar / Crest -->
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high border border-outline-variant/40 flex items-center justify-center relative p-0.5 shadow-inner">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div>
+<div class="flex items-center space-x-1.5">
+<h1 class="text-headline-sm font-headline-sm font-bold text-on-surface tracking-tight leading-none">Vismart Social OS</h1>
+<span class="px-1.5 py-0.5 rounded bg-primary-container text-on-primary-container font-code-sm text-code-sm font-semibold tracking-wide">v4.8 Pro</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center mt-0.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary mr-1 animate-pulse"></span>
+              Core Synced
+            </p>
+</div>
+</div>
+<!-- Trailing: Telemetry Sensor and Admin Avatar / Badge -->
+<div class="flex items-center space-x-2.5">
+<button aria-label="Live Sensor Node" class="p-1 rounded-lg text-primary hover:bg-surface-container-high/50 active:scale-95 transition-transform duration-150 flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[20px]">sensors</span>
+</button>
+<!-- Admin Avatar 'Mohit Jain' (MJ) with notification pill -->
+<div class="relative active:scale-95 transition-transform cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-primary/40 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">
+              MJ
+            </div>
+<span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-tertiary-container text-on-tertiary-container text-[10px] font-bold flex items-center justify-center ring-2 ring-surface-container-lowest">3</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Operational Canvas -->
+<main class="flex-1 px-space-md pt-space-sm pb-24 space-y-space-md">
+<!-- Live Stream Beacon Strip -->
+<section aria-label="System Beacon" class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center space-x-2">
+<div class="relative flex items-center justify-center w-3 h-3">
+<span class="radar-beacon absolute w-4 h-4 rounded-full bg-secondary-container"></span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Active Dispatch Engine</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high border border-outline-variant/40 font-code-sm text-code-sm text-secondary font-medium">
+            48 Posts Queued
+          </span>
+<span class="material-symbols-outlined text-[16px] text-outline">tune</span>
+</div>
+</section>
+<!-- 2. Quick Metric Cards (2x2 Grid with Obsidian Glass Cards) -->
+<section aria-label="Quick Metrics" class="grid grid-cols-2 gap-2.5">
+<!-- Metric 1: Total Brands -->
+<article class="bg-surface-container/85 backdrop-blur-md rounded-xl p-3 border border-outline-variant/30 flex flex-col justify-between shadow-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Total Brands</span>
+<span class="px-1.5 py-0.5 rounded bg-secondary-container/20 text-secondary font-code-sm text-code-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-[11px] mr-0.5">trending_up</span>+12/mo
+            </span>
+</div>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface tracking-tight">100</span>
+<span class="material-symbols-outlined text-outline text-[18px]">corporate_fare</span>
+</div>
+<div class="mt-1.5 w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 82%;"></div>
+</div>
+</article>
+<!-- Metric 2: Connected Accounts -->
+<article class="bg-surface-container/85 backdrop-blur-md rounded-xl p-3 border border-outline-variant/30 flex flex-col justify-between shadow-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Connected</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-code-sm text-code-sm font-semibold">Active</span>
+</div>
+<div class="mt-1 flex items-baseline justify-between">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface tracking-tight">286</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+</div>
+<!-- Sub-chips for connected channels -->
+<div class="mt-1 flex items-center space-x-1 font-code-sm text-code-sm">
+<span class="px-1 py-0.2 rounded bg-surface-container-high text-on-surface-variant">IG 96</span>
+<span class="px-1 py-0.2 rounded bg-surface-container-high text-on-surface-variant">FB 95</span>
+<span class="px-1 py-0.2 rounded bg-surface-container-high text-on-surface-variant">YT 95</span>
+</div>
+</article>
+<!-- Metric 3: Today's Posts -->
+<article class="bg-surface-container/85 backdrop-blur-md rounded-xl p-3 border border-outline-variant/30 flex flex-col justify-between shadow-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Today's Batch</span>
+<span class="font-code-sm text-code-sm text-secondary font-bold">45 / 48 Done</span>
+</div>
+<div class="mt-1 flex items-baseline justify-between">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface tracking-tight">48</span>
+<span class="font-label-sm text-label-sm text-tertiary font-medium">3 Left</span>
+</div>
+<div class="mt-1.5 w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full" style="width: 94%;"></div>
+</div>
+</article>
+<!-- Metric 4: Success Rate -->
+<article class="bg-surface-container/85 backdrop-blur-md rounded-xl p-3 border border-outline-variant/30 flex flex-col justify-between shadow-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Success Rate</span>
+<span class="px-1.5 py-0.5 rounded bg-secondary/10 text-secondary font-code-sm text-code-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-0.5">check_circle</span>High
+            </span>
+</div>
+<div class="mt-1 flex items-baseline justify-between">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-secondary tracking-tight">93.7%</span>
+<span class="material-symbols-outlined text-outline text-[18px]">show_chart</span>
+</div>
+<div class="mt-1 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Timeout: 2</span>
+<span class="text-tertiary">Fails: 1</span>
+</div>
+</article>
+</section>
+<!-- 3. Instant Control Bar (Thumb-Friendly Ergonomic CTA Cluster) -->
+<section aria-label="Instant Controls" class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-2.5 flex items-center justify-between gap-2 shadow-md">
+<!-- Start Engine Primary CTA -->
+<button class="flex-1 h-11 bg-secondary-container hover:bg-secondary text-on-secondary-container font-headline-sm text-headline-sm font-semibold rounded-lg flex items-center justify-center space-x-1.5 shadow-sm active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="text-[13px]">Start Engine</span>
+</button>
+<!-- Global Pause CTA -->
+<button class="flex-1 h-11 bg-error-container/30 border border-error-container text-tertiary hover:bg-error-container/50 font-headline-sm text-headline-sm font-semibold rounded-lg flex items-center justify-center space-x-1.5 active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">pause</span>
+<span class="text-[13px]">Global Pause</span>
+</button>
+<!-- Force Post Lightning Action -->
+<button class="h-11 px-3.5 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center active:scale-95 transition-transform duration-150 shadow-sm" title="Force Trigger Immediate Batch" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</button>
+</section>
+<!-- 4. Google Sheet & Drive Live Status Matrix -->
+<section aria-label="Integration Telemetry" class="bg-surface-container/70 border border-outline-variant/30 rounded-xl p-3 space-y-2">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/20">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">database</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Pipelines &amp; Anti-Ban Telemetry</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary flex items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block mr-1"></span>Sync 100%
+          </span>
+</div>
+<div class="grid grid-cols-1 gap-1.5 font-label-sm text-label-sm">
+<!-- Google Sheet Pipeline -->
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">table_chart</span>
+<span class="text-on-surface font-medium">Google Sheet Master</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Row 142</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-primary font-code-sm text-code-sm">Next in 14m</span>
+</div>
+</div>
+<!-- Google Drive Content Pool -->
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-[16px]">cloud_sync</span>
+<span class="text-on-surface font-medium">Reels Vault</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">14k Synced (1.4 TB)</span>
+</div>
+<!-- Anti-Ban Guard Beacon -->
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">security</span>
+<span class="text-on-surface font-medium">Anti-Ban Guard</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary font-code-sm text-code-sm font-semibold flex items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block mr-1 animate-ping"></span>45s Jitter Active
+            </span>
+</div>
+</div>
+</section>
+<!-- 5. Today's Publishing Queue (Vertical Feed of High-Fidelity Cards) -->
+<section aria-label="Today's Publishing Queue" class="space-y-2.5">
+<div class="flex items-center justify-between px-0.5">
+<div class="flex items-center space-x-1.5">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Publishing Queue</h2>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-code-sm text-code-sm font-semibold">5 of 48 shown</span>
+</div>
+<button class="text-primary hover:text-primary-fixed font-label-sm text-label-sm font-semibold flex items-center" type="button">
+            View All <span class="material-symbols-outlined text-[14px] ml-0.5">arrow_forward</span>
+</button>
+</div>
+<!-- Card 1: 08:30 AM | Published -->
+<article class="bg-surface-container/85 backdrop-blur-md rounded-xl p-3 border border-outline-variant/30 space-y-2 shadow-sm transition hover:border-outline">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-low">08:30 AM</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface">Indore Properties</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary font-label-sm text-label-sm font-semibold flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1" style="font-variation-settings: 'FILL' 1;">check</span>Published
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface line-clamp-1 font-medium">Indore Vijay Nagar Commercial Property Tour</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/20 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-outline">3:28</span>
+<div class="flex items-center space-x-1">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">IG</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">FB</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">YT</span>
+</div>
+</div>
+<a class="text-primary hover:underline flex items-center font-medium" href="#">
+              View Post <span class="material-symbols-outlined text-[13px] ml-0.5">open_in_new</span>
+</a>
+</div>
+</article>
+<!-- Card 2: 10:15 AM | Published -->
+<article class="bg-surface-container/85 backdrop-blur-md rounded-xl p-3 border border-outline-variant/30 space-y-2 shadow-sm transition hover:border-outline">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-low">10:15 AM</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface">AI Business Hub</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary font-label-sm text-label-sm font-semibold flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1" style="font-variation-settings: 'FILL' 1;">check</span>Published
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface line-clamp-1 font-medium">Top 5 AI Agents For E-Commerce 2025</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/20 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-outline">1:45</span>
+<div class="flex items-center space-x-1">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">IG</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">FB</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">YT</span>
+</div>
+</div>
+<a class="text-primary hover:underline flex items-center font-medium" href="#">
+              View Post <span class="material-symbols-outlined text-[13px] ml-0.5">open_in_new</span>
+</a>
+</div>
+</article>
+<!-- Card 3: 12:45 PM | Processing (Amber Pulse & Chunk Progress) -->
+<article class="bg-surface-container/90 backdrop-blur-md rounded-xl p-3 border border-outline-variant/40 space-y-2 shadow-md relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-tertiary-container/30">
+<div class="h-full bg-tertiary-container animate-pulse" style="width: 80%;"></div>
+</div>
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-low">12:45 PM</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface">VisMart Daily Offers</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-semibold flex items-center animate-pulse">
+<span class="material-symbols-outlined text-[12px] mr-1">sync</span>Encoding (Chunk 4/5)
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface line-clamp-1 font-medium">Mega Grocery Flash Sale 50% Off</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/20 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-outline">0:58</span>
+<div class="flex items-center space-x-1">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">IG</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">FB</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">YT</span>
+</div>
+</div>
+<div class="flex items-center space-x-1.5 text-tertiary font-code-sm text-code-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+<span>Uploading Video...</span>
+</div>
+</div>
+</article>
+<!-- Card 4: 03:20 PM | In Queue (Cyan/Blue badge + Force Post Compact Button) -->
+<article class="bg-surface-container/85 backdrop-blur-md rounded-xl p-3 border border-outline-variant/30 space-y-2 shadow-sm transition hover:border-outline">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-low">03:20 PM</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface">Jain Wellness Store</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm font-semibold flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1">schedule</span>Next in 18m
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface line-clamp-1 font-medium">Morning Detox Routine</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/20 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-outline">2:12</span>
+<div class="flex items-center space-x-1">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">IG</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">FB</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">YT</span>
+</div>
+</div>
+<button class="h-7 px-2.5 rounded bg-primary-container/80 text-on-primary-container font-label-sm text-label-sm font-semibold flex items-center space-x-1 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>Force Post</span>
+</button>
+</div>
+</article>
+<!-- Card 5: 06:00 PM | Failed (Ruby Badge + Retry CTA) -->
+<article class="bg-surface-container/85 backdrop-blur-md rounded-xl p-3 border border-error-container/40 space-y-2 shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-low">06:00 PM</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface">Startup India News</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container/30 text-error font-label-sm text-label-sm font-semibold flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1">error</span>Dispatch Timeout
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface line-clamp-1 font-medium">D2C Scaled to 100 Cr</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/20 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center space-x-2">
+<span class="font-code-sm text-code-sm text-outline">4:10</span>
+<div class="flex items-center space-x-1">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">IG</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">FB</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-[10px] font-semibold text-on-surface">YT</span>
+</div>
+</div>
+<button class="h-7 px-3 rounded bg-error-container/40 border border-error-container text-error font-label-sm text-label-sm font-semibold flex items-center space-x-1 active:scale-95 transition-transform hover:bg-error-container/60" type="button">
+<span class="material-symbols-outlined text-[13px]">replay</span>
+<span>Retry</span>
+</button>
+</div>
+</article>
+</section>
+</main>
+<!-- 6. BottomNavBar (Shared Component Implementation) -->
+<!-- Blueprint: destination_count: 5 | labels: ["Command", "Channels", "Schedule", "Hermes AI", "Audits"] | icons: ["dashboard", "hub", "calendar_today", "auto_awesome", "receipt_long"] -->
+<!-- Active State: 'Command' is the exact match for this Mobile Native App Command Center screen -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-xs py-space-xs max-w-md mx-auto safe-area-bottom bg-surface-container-lowest/90 backdrop-blur-xl shadow-2xl border-t border-outline-variant/30">
+<!-- Tab 1: Command (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-surface-container-high text-primary rounded-xl px-space-sm py-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm mt-0.5">Command</span>
+</a>
+<!-- Tab 2: Channels (INACTIVE with 100 brands badge indicator) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-space-sm py-space-xs active:scale-95 transition-transform duration-150 relative" href="#">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+<span class="font-label-sm text-label-sm mt-0.5">Channels</span>
+<span class="absolute top-1 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</a>
+<!-- Tab 3: Schedule (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-space-sm py-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="font-label-sm text-label-sm mt-0.5">Schedule</span>
+</a>
+<!-- Tab 4: Hermes AI (INACTIVE with AI flare) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-space-sm py-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm mt-0.5">Hermes AI</span>
+</a>
+<!-- Tab 5: Audits (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-space-sm py-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-0.5">Audits</span>
+</a>
+</nav>
+</div>
+</body></html>
